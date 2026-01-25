@@ -1,0 +1,355 @@
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Learning</title>
+    <style>
+        .bg-black {
+            background-color: #212121;
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <div >
+        <h1 id="title" class="heading">DOM Learning on Chai aur Code <span>test text</span></h1>
+
+        <h2>Lorem ipsum dolor sit amet consectetur.</h2>
+        <h2>Lorem ipsum dolor sit amet consectetur.</h2>
+        <h2>Lorem ipsum dolor sit amet consectetur.</h2>
+
+        <ul>
+            <li>one</li>
+            <li>two</li>
+            <li>three</li>
+        </ul>
+
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, odio!</p>
+    </div>
+    
+</body>
+</html>
+
+-->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM with Chai aur Code</title>
+    <style>
+        
+    </style>
+</head>
+<body style="background-color: #212121; color: #fff;">
+
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+    
+</body>
+
+<script>
+    // const Parent = document.querySelector('.parent')
+    // console.log(Parent);
+    // console.log(Parent.children[1].innerHTML);
+
+    // for (let i = 0; i < Parent.children.length; i++) {
+    //     console.log(Parent.children[i]);
+    //     console.log(Parent.children[i].innerHTML);  
+    // }
+    // Parent.children[1].style.color = "orange"
+    // console.log(Parent.firstElementChild);
+    // console.log(Parent.childNodes);
+    
+    
+</script>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Last DOM Learning</title>
+</head>
+<body style="background-color: #212121; color: #fff">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+    
+</body>
+
+<script>
+    function addLanguage(langName) {
+        const li = document.createElement('li');
+        li.innerHTML = `${langName}`;
+        document.querySelector('.language').appendChild(li);
+    }
+    addLanguage("python");
+    addLanguage("java");
+
+    function addOptiLanguage(langName) {
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(langName));
+        document.querySelector('.language').appendChild(li);
+    }
+    addOptiLanguage("C++");
+    addOptiLanguage("Typescript");
+
+    // Edit
+    const secondLang = document.querySelector("li:nth-child(2)")
+    // secondLang.innerHTML = "Mojo";
+    // works fine, but not optimised.
+
+    // other method:
+    const newLi = document.createElement('li');
+    newLi.textContent = "Mojo";
+    secondLang.replaceWith(newLi);
+
+    const firstLang = document.querySelector("li:first-child");
+    firstLang.innerHTML = "Ruby";
+
+    // Remove
+    const lastLang = document.querySelector("li:last-child");
+    lastLang.remove();
+
+</script>
+</html> -->
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events</title>
+</head>
+
+<body style="background-color: #414141; color: whitesmoke;">
+    <h2>Amazing Car Images</h2>
+
+    <div>
+        <ul id="images">
+            <li><img src="https://media.istockphoto.com/id/1435226078/photo/front-of-a-white-bmw-m4-parked-on-a-street-with-trees-in-the-background.jpg?s=612x612&w=0&k=20&c=l1IupUrh-_Zbcse-hDkaUAh-qMD82hJspXjnN0IBZlg="
+                    alt="m5" height="200px" width="300px" id="m5"></li>
+
+            <li><img src="https://i.gaw.to/content/photos/56/97/569701-brabus-deep-blue-900-g63-comes-with-matching-boat-and-watch.jpg" alt="g63" height="200px" width="300px" id="g63"></li>
+
+            <li><img src="https://mediapool.bmwgroup.com/cache/P9/202408/P90564792/P90564792-phantom-scintilla-2666px.jpg" alt="RR Ghost" height="200px" width="300px" id="RR Ghost"></li>
+
+            <li><img src="https://www.thrustzone.com/wp-content/uploads/2019/09/Lamborghini-sian-hybrid-sports-car-1.jpg" alt="aventador" height="200px" width="300px" id="aventador"></li>
+
+            <li><img src="https://images-porsche.imgix.net/-/media/FE0E8B53548F42A882AEDABABB210D1C_A316ADFA551B49B19133A60525591942_CZ25W18OX0010-911-gt3-driving-curve?w=999&q=85&auto=format" alt="911" height="200px" width="300px" id="911"></li>
+
+            <li><a style="color: aliceblue;" href="https://www.google.com" id="google">Google</a></li>
+
+        </ul>
+    </div>
+
+</body>
+
+<script>
+    // document.getElementById('RR Ghost').onclick = function () {
+    //     alert("RR GHOST ")
+    // }
+    // note that this approach has some problem that when onclick event is not 
+    // able to give propagation.  in other words, we can say, onclick gives less features.
+    // other way of doing this is to use eventListener.
+
+    // document.getElementById('RR Ghost').addEventListener('click', function(e) {
+    //     console.log(e);
+    //     //alert("RR GHOST - MANSION ON WHEELS");        
+    // }, false)
+
+    // document.getElementById('images').addEventListener('click', function(e) {
+    //     console.log("Clicked inside the ul");
+    // }, false)
+
+    // document.getElementById('RR Ghost').addEventListener('click', function(e) {
+    //     console.log("RR GHOST - MANSION ON WHEELS");
+    //     e.stopPropagation()
+    // }, false)
+
+    // document.getElementById('google').addEventListener('click', function(e) {
+    //     e.preventDefault();
+    //     e.stopPropagation()
+    //     console.log("google clicked");
+    // })
+
+    // Activity : if we want to remove the images of li by clicking on it.
+    document.querySelector('#images').addEventListener('click', function(e) {
+        //console.log(e.target);  // tells from where the event has been occuring i.e the source image here.
+        console.log(e.target.parentNode);
+        // console.log(e.target.tagName);  // tells the type of element tag
+        if (e.target.tagName === 'IMG') {
+            console.log(e.target.id);
+            let removeIt = e.target.parentNode;
+            removeIt.remove();
+        }
+        //let removeIt = e.target.parentNode;
+
+        // first method to remove
+        //removeIt.remove();
+        // second method to remove
+        // removeIt.parentNode.removeChild(removeIt);
+        
+    }, false);
+
+    
+</script>
+
+</html>
+
+-->
+
+
+
+<!-- Async Function -->
+
+<!--
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Function </title>
+ </head>
+ <body>
+    <h1>Chai Aur Code </h1>
+    <button id="stop"> stop</button>
+
+    
+ </body>
+ <script>
+    // setTimeout(function(){
+    //     console.log("Kavya Maurya");
+    // }, 1000);
+
+    const changeText = function() {
+        document.querySelector('h1').innerHTML = "Learning JS right now "
+    }
+
+    const changeMe = setTimeout(changeText, 3000);
+
+    //clearTimeout(changeMe)
+    document.querySelector('#stop').addEventListener('click', function() {
+        clearTimeout(changeMe);
+        console.log("Stopped");
+    })
+ </script>
+ </html>
+
+-->
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h1>Chai aur Javascript</h1>
+<button id="start">Start</button>
+<button id="stop">Stop</button>
+    
+</body>
+
+<script>
+    // setInterval(function(){
+    //     console.log("Kavya Maurya", Date.now());
+        
+    // }, 2000)
+
+    // we can also give our name as a paramter.
+    const sayDate = function(str) {
+        console.log(str, Date.now());
+    }
+    const intervel = setInterval(sayDate, 2000, "Kavya");
+
+    clearInterval(intervel)
+</script>
+</html>
+-->
+
+
+
+<!-- API Request : -->
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    // XMLHttpRequest() is a method to request data from a server.
+    const xhr = new XMLHttpRequest();
+    // to make this object, we write 'new' keyword before xmlhttlrequest.
+
+    const requestURL = 'https://api.github.com/users/kavyamaurya';
+    
+    xhr.open('GET', requestURL);
+
+    // console.log(xhr.readyState);
+
+    xhr.onreadystatechange = function() {
+        console.log(xhr.readyState);
+
+        if(xhr.readyState === 2) {
+            console.log("Headers received");
+        }
+
+        if(xhr.readyState === 3) {
+            console.log("Loading response body");
+        }
+
+        if(xhr.readyState === 4) {
+            console.log("Request finished and response is ready");
+
+            // console.log(xhr.responseText);
+            // The xhr.responseText is a read-only string property that contains 
+            // the raw, text-based data received from a server after an 
+            // XMLHttpRequest (XHR) request has completed. 
+
+            // if we wanted to get a response text of certain context, then we use
+            // this keyword.
+            console.log(this.responseText);
+            
+            
+        }
+        
+    }
+    // The xhr.open() method is used to initialize an XMLHttpRequest object, preparing it to send a network 
+    // request. it has 2 paramters; method and url.
+
+    xhr.send();
+    // The xhr.send() method sends the request to the server.
+
+    // to check the state of process, we use readyState property.
+    // The xhr.readyState property holds the current status of an XMLHttpRequest 
+    // (XHR) request as it progresses through its lifecycle. It changes from 0 
+    // (unsent) to 4 (done) during the process, and you can track these changes
+    //  using the onreadystatechange event handler. 
+
+    
+</script>
+</html>
+
+-->
+
