@@ -977,13 +977,38 @@ console.log(value) // it prints 0
 
 // for of loops
 // This loop is generally used to iterate inside arrays or strings.
+// Syntax :
+// for(const val of string) {};
+
 // const arr = [1 ,2 ,3, 4, 5]
 // for (const i of arr) {
 //   console.log(i);
   
 // }
 
-// Maps in JS : It remembers the key- value pairs and remembers the original insertion order of the pair
+// for in loops
+// This loop is generally used to iterate inside objects.
+// Syntax :
+// for(let key in object) {};
+// Example :
+// student = {
+//   name: "Ram",
+//   age: 20,
+//   cgpa: 9.2,
+//   isPass: true
+// };
+
+// for(let i in student) {
+//   console.log(i);
+// }
+
+// Output: name age cgpa isPass
+// This means that for in operator returns the keys of the object.
+// to print its value too, we write it as:
+// console.log(key, student[key]);
+// This gives output: name Ram, age 20, cgpa 9.2, isPass true
+
+// Maps in JS: It remembers the key- value pairs and remembers the original insertion order of the pair
 // const map = new Map()
 // map.set('IN', "India")
 // map.set('USA', "United States of America")
