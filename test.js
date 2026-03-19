@@ -976,6 +976,7 @@ console.log(value) // it prints 0
 // do - while loop (Known)
 
 // for of loops
+// This loop is generally used to iterate inside arrays or strings.
 // const arr = [1 ,2 ,3, 4, 5]
 // for (const i of arr) {
 //   console.log(i);
