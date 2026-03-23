@@ -1044,6 +1044,10 @@ console.log(value) // it prints 0
 //   console.log(val);
 // })
 
+// For-each loop is not used in objects because objects are not iterable. it works on iterarable things
+// and so, it works on maps.
+// Also, iterator written in for-each loop is (key,value), not [key,value] as it is written in maps.
+
 // in arrow function, it can bewritten as :
 // coding.forEach((val) => {
 //   console.log(val);
