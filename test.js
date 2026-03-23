@@ -1019,6 +1019,8 @@ console.log(value) // it prints 0
 // for (const [key, value] of map) {
 //   console.log(key, ':', value);
 // }
+// This [key, value] is known as destructuring of iterator. This can only work on maps, not on objects.
+// For objects, we have different way of iterating. 
 
 // [key, value] is not iteratable on Objects.
 
