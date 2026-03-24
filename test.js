@@ -1236,20 +1236,14 @@ console.log(value) // it prints 0
 // you react to those things.
 
 // Example actions that are “events”:
-
 // A user clicks a button 🖱️
-
 // A user hovers the mouse over an image 🖼️
-
 // A user types into an input field ⌨️
-
 // A web page loads completely 🌐
-
 // A form is submitted 📤
-
 // A key is pressed ⌨️
 
-// to perform any event, thre are certain methods thorugh which we can do :
+// to perform any event, there are certain methods through which we can do :
 // First one is :
 // document.getElementById('RR Ghost').onclick = function () {
 //         alert("RR GHOST ")
@@ -1257,8 +1251,8 @@ console.log(value) // it prints 0
 
 // But this method is not as helpful.
 
-// Second one is to use EventListener as it not only fives onclick functionality but also gives the 
-// ability of propogation which we will discuss later.
+// Second one is to use EventListener as it not only gives onclick functionality but also gives the 
+// ability of propagation which we will discuss later.
 // document.getElementById('RR Ghost').addEventListener('click', function() {
 //         alert("RR GHOST - MANSION ON WHEELS")
 // }, false)
@@ -1282,7 +1276,7 @@ console.log(value) // it prints 0
 
 // Now , we will talk about Event Propogation.
 // in this, we passed the last parameter as false which is default.
-// so, actually, there are 2 contexts in event propogation - Event Bubbling and Event Capturing.
+// so, actually, there are 2 contexts in event propagation - Event Bubbling and Event Capturing.
 
 // Event Bubbling means when an event occurs from inside to outside. for this, we write false
 
@@ -1303,6 +1297,140 @@ console.log(value) // it prints 0
 // There are 2 types of codes present in javascript:Blocking code and Non-blocking code.
 // blocking code blocks the flow of program. while non-blocking code does not block execution.
 // example of blocking code is Read File sync. And example of non-blocking code is Read File Async.
+
+// Why Async JS Exists?
+// Because some tasks take time:
+// API calls 🌐
+// File reading 📁
+// Database queries 🗄️
+// Timers ⏱️
+
+// 👉 JS does NOT wait → otherwise UI would freeze
+
+// How JS Handles Async (Core Concept 🔥)
+// JavaScript uses:
+// 🧩 Components:
+// Call Stack
+// Web APIs (Browser)
+// Callback Queue
+// Event Loop
+
+// Example : 
+// console.log("Start");
+
+// setTimeout(() => {
+//     console.log("Async Task");
+// }, 2000);
+
+// console.log("End");
+
+// Step-by-step:
+// Start → goes to Call Stack → prints
+// setTimeout → sent to Web API
+// End → prints immediately
+// After 2 sec → callback goes to Queue
+// Event Loop pushes it to Call Stack
+// "Async Task" prints
+
+// 4. Types of Asynchronous Patterns
+// 🔹 1. Callbacks (Oldest)
+
+// 👉 A function passed inside another function
+
+// function fetchData(callback) {
+//     setTimeout(() => {
+//         callback("Data received");
+//     }, 2000);
+// }
+
+// fetchData(function(data) {
+//     console.log(data);
+// });
+// ❌ Problem: Callback Hell 😵
+// doTask1(function() {
+//     doTask2(function() {
+//         doTask3(function() {
+//             doTask4(function() {
+//                 // nested mess 😵
+//             });
+//         });
+//     });
+// });
+
+// 👉 Hard to read, debug, maintain
+
+// 🔹 2. Promises (Modern Solution)
+
+// 👉 A Promise represents:
+
+// A value that will be available in future
+
+// 📦 States of Promise:
+// Pending
+// Fulfilled ✅
+// Rejected ❌
+// Example:
+// const promise = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         resolve("Success!");
+//     }, 2000);
+// });
+// Consuming Promise:
+// promise.then((data) => {
+//     console.log(data);
+// }).catch((error) => {
+//     console.log(error);
+// });
+// 🔥 Real Example (API-like)
+// function getUser() {
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             resolve({ name: "Kavya" });
+//         }, 1000);
+//     });
+// }
+
+// getUser().then(user => console.log(user));
+// 🔹 3. Async / Await (Best & Cleanest ✅)
+
+// 👉 Built on top of Promises
+// 👉 Makes async code look synchronous
+
+// Example:
+// function getData() {
+//     return new Promise((resolve) => {
+//         setTimeout(() => resolve("Data loaded"), 2000);
+//     });
+// }
+
+// async function fetchData() {
+//     console.log("Start");
+
+//     const result = await getData(); // waits here
+
+//     console.log(result);
+//     console.log("End");
+// }
+
+// fetchData();
+// Output:
+// Start
+// Data loaded
+// End
+// ⚠️ Important Rules
+// 🔹 await only works inside async
+// async function test() {
+//     await something();
+// }
+// 🔹 Error Handling
+// async function test() {
+//     try {
+//         const data = await getData();
+//         console.log(data);
+//     } catch (err) {
+//         console.log(err);
+//     }
+// }
 
 
 // SetTimeout() contains parameters Handler which is a callback function which does not have a name.
