@@ -1499,7 +1499,11 @@ console.log(value) // it prints 0
 
 // 👉 Hard to read, debug, maintain
 
-// 🔹 2. Promises (Modern Solution)
+// 🔹 2. Promises (Modern Solution) : A promise is an object representing the eventual completion or failure of an asynchronous operation.
+// It is a returned object to which you attach callbacks, instead of passing callbacks into a function.
+// It takes a callback function in which we take 2 arguments Resolve and Reject. 
+// const promiseOne = new Promise(function(resolve, reject)) {
+// }
 
 // 👉 A Promise represents:
 
@@ -1516,11 +1520,60 @@ console.log(value) // it prints 0
 //     }, 2000);
 // });
 // Consuming Promise:
-// promise.then((data) => {
+// promise.then((data) => {    // then opeerator is directly related to resolve argument
 //     console.log(data);
 // }).catch((error) => {
 //     console.log(error);
 // });
+
+// Here, to connect resolve with then operator, we use to write resolve() function while creating a promise. We can pass parameters too in it.
+
+// Other way of writing this promise is :
+// new Promise(function(resolve, reject) {
+//   setTimeout(function() {
+//     console.log("Async Task done");
+//     resolve();
+//   }, 1000)
+// }).then(function() {
+//   console.log("Async Task completed!");
+// })
+
+// Including reject also in promise:
+// const promise2 = new Promise(function(resolve, reject) {
+//   setTimeout(function() {
+//     let error = true;
+//     if(!error) {
+//       resolve({username : "Kavya Maurya", email : "kavya@456.com"});
+//     } else {
+//       reject("ERROR! Something wrong happened.");
+//     }
+//   }, 1000)
+// })
+
+
+// This returning of username will throw error. 
+// const username = promise2.then((user) => {
+//   console.log(user);
+//   return user.username;
+// })
+
+// to resolve this returning issue, we will put another nested then operator. This is known as Chaining.
+// promise2.then((user) => {
+//   console.log(user);
+// return user.username
+// }).then((Username) => {
+//   console.log(Username);
+// }).catch(function(err) {
+//   console.log(err);
+// })  // catch operator is directly related to reject paramter.
+
+// After the promise is fulfilled, there is a callback to execute the final settlement of promise which is done by finally(). 
+// And it is always executed whether the condition is true or false.
+// .finally(() => console.log("Finally, the promise is either resolved or rejected."))
+
+
+
+
 // 🔥 Real Example (API-like)
 // function getUser() {
 //     return new Promise((resolve) => {
