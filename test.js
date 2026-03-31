@@ -1332,6 +1332,57 @@ console.log(value) // it prints 0
 // Event Loop pushes it to Call Stack
 // "Async Task" prints
 
+// About setTimeout() function : 
+// The setTimeout() function in JavaScript is used to execute a function after a specified amount of time (delay).
+// It is one of the most important concepts in asynchronous JavaScript.
+
+// Syntax : setTimeout(function, delay, param1, param2, ...)
+// Parameters
+// function → The function to run
+// delay → Time in milliseconds (1000 ms = 1 second)
+// param1, param2… → Optional parameters passed to the function
+
+// Example : setTimeout(function() {
+//   console.log("Hello after 2 seconds");
+// }, 2000);
+
+// Example with arrow function : setTimeout(() => {
+//   console.log("This runs after 3 seconds");
+// }, 3000);
+
+// Example with function name: function greet() {
+//   console.log("Hello User!");
+// }
+
+// setTimeout(greet, 1000);
+
+// Example with passing parameters: function greet(name) {
+//   console.log("Hello " + name);
+// }
+
+// setTimeout(greet, 2000, "Kavya");
+
+// You can stop setTimeout() using clearTimeout()
+// Example: let timer = setTimeout(() => {
+//   console.log("This won't run");
+// }, 3000);
+
+// clearTimeout(timer);
+
+// Here, the function will never execute.
+
+// 📌 Real Life Uses
+
+// setTimeout() is used for:
+
+// Delay execution
+// Loading animations
+// API calls delay
+// Debouncing
+// Showing notifications
+// Auto logout
+// UI animations
+  
 // 4. Types of Asynchronous Patterns
 // 🔹 1. Callbacks (Oldest)
 
