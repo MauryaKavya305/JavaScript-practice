@@ -1616,14 +1616,27 @@ const promise3 = new Promise(function(resolve, reject) {
   }, 1000)
 })
 
+// async function consumePromise3() {
+//   const response = await promise3;
+//   console.log(response);
+// }
+
+// consumePromise3();
+
+// By this, if there is no error, then its working fine. but if there is an error, then async await throwing errors.
+// when error is false, it works fine. but when error is true, it gives unhandled promise rejection error, 
+// as async await cannot handle the error itself. so for this, we use try catch block.
+
 async function consumePromise3() {
-  const response = await promise3;
-  console.log(response);
+  try {
+    const response = await promise3;
+    console.log(response);
+  } catch (error){
+    console.log(error);
+  }
 }
 
 consumePromise3();
-
-// By this, if there is no error, then its working fine. but if there is an error, then async await throwing errors.
 
 // fetchData();
 // Output:
@@ -1644,18 +1657,6 @@ consumePromise3();
 //         console.log(err);
 //     }
 // }
-
-
-// SetTimeout() contains parameters Handler which is a callback function which does not have a name.
-// another parameter is timeout. So setTimeout() function does any work after a certain time .
-
-// to stop this timeout function, we use function clearTimeout().
-
-// setTimeIntevel function() is also similar to setimeout function. Just the difference is 
-// it continuously repeats that event.
-// to stop this infinite occuring function, we use clearTimeIntervel() function.
-
-
 
 // API Request :
 // Earlier, we were requesting to get the APIs, now its been done with the help of Fetch().
@@ -1702,138 +1703,6 @@ consumePromise3();
 // is a debugging tool for DevTools. It is injected during the runtime.
 
 
-
-// Promises in JS :
-// the promise object represents the eventual completion or failure of an asynchronous operation and its 
-// resulting value.
-// A promise can be said as a proxy or a value not necessarily known when the promise is created. it allows
-// you to associate handlers with an asynchronous actions eventual success value or failure reason. 
-// this lets asynchronous methods return values like synchornous methods, instead of immediately returing 
-// the final value, it returns a promise to supply the value at some point of time in future.
-
-// a Promise can have 3 states :
-// 1. Pending - it is initial state, neither promise is fulfilled nor rejected.
-// 2. Fulfilled - operation is completed successfully.
-// 3. Rejected - operation got failed.
-
-// const promise1 = new Promise(function(resolve, reject) {
-//   // do an async task like DB Calls, cryptography tasks, network calls
-//   setTimeout(function() {
-//     console.log("Async task is complete");
-//     resolve();
-//   }, 2000)
-// });
-
-// this is a syntax or say a way of creating a promise.
-
-// to consume a promise, we do 
-// promise1.then(function() {
-//     console.log("Promise consumed");
-    
-// })
-// then method is directly related to 'resolve' parameter. we get a callback function inside then method.
-// that callback automatically receives an argument that returns the value coming from timeout.
-
-// in output, we get the timeout statements, but not of then. This is because we had not connected resolve
-// and then yet. for this, call the resolve method.
-
-
-// we can do the above work without making variables and storing in it. like - 
-// new Promise(function(resolve, reject) {
-//   setTimeout(function() {
-//     console.log("Async task");
-//     resolve();
-//   }, 1000)
-
-// }).then(function() {
-//   console.log("Promise completed");
-// })
-
-// const promise3 = new Promise(function(resolve, reject) {
-//   setTimeout(function() {
-//     resolve({username : "Chai", email : "Chai@example.com"})
-//   }, 1000)
-// })
-
-// promise3.then(function(user) {
-//   console.log(user);
-// })
-
-// from this, we get to know that the parameter that we will pass in resolve function will be found in then function.
-
-// const promise4 = new Promise(function(resolve, reject) {
-//   setTimeout(function() {
-//     let error = false;
-
-//     if(!error) {
-//       resolve({username : "Kavya", password : "1234"});
-//     } else {
-//       reject('Error. Something went wrong!');
-//     }
-//   }, 1000)
-// })
-
-// const username = promise4.then((user) => {
-//   console.log(user);
-//   return user.username;
-// });
- // here reject is directly related to catch() method.
-// console.log(username);
-// by consoling the variable through which we want to get the returned value gives error. so this syntax is X.
-
-// promise4
-// .then((user) => {
-//   console.log(user);
-//   return user.username
-// })
-// .then((myusername) => {
-//   console.log(myusername);
-// })
-// .catch(function(error) {
-//   console.log(error);
-// })
-// this syntax is known as Chaining. this syntax is beneficial in database connecttion.
-
-// after this, there is one method which is always run. it is judt like default case of switch statement.
-// known as finally method that tells what actually happened at the last.
-// .finally(() => console.log("The promise is either resolved or rejected finally."));
-
-
-// const promise5 = new Promise(function(resolve, reject) {
-//   setTimeout(function() {
-//     let error = true;
-
-//     if(!error) {
-//       resolve({username : "Javascript", password : 123});
-//     } else {
-//       reject('Error : JS went wrong.');
-//     }
-//   }, 1000)  
-// })
-
-// we can consume the promise by using async await also.
-// async await waits for some time until the works completes and move forward, else it gives error.
-// async function consumePromise5() {
-//   const response = await promise5
-//   console.log(response);
-// }
-// consumePromise5();
-
-// when error is false, it works fine. but when error is true, it gives unhandled promise rejection error, 
-// as async await cannot handle the error itself. so for this, we use try catch block.
-
-// async function consumePromise5() {
-//   try {
-//     const response = await promise5;
-//     console.log(response);
-//   } catch (error){
-//     console.log(error);
-//   }
-// }
-
-// consumePromise5();
-
-
 // now if we want an await function for an api call , then we do :
 // async function fetchUserData() {
 //   try {
@@ -1866,7 +1735,98 @@ consumePromise3();
 // XMLHttpRequest to fetch xml data via HTTP. But as a web grow, it became difficult to work with it.
 // then the Fetch API came into existence to make things easier. It was present in web but not on node js.
 
+The Fetch API is used to request data from a server (API) and receive a response asynchronously.
 
+It is commonly used for: Getting data from APIs, Sending data to server, Backend communication, Loading dynamic content
+
+📌 Basic Syntax
+fetch(url)
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.log(error));
+
+📌 Simple Example
+fetch("https://jsonplaceholder.typicode.com/users")
+  .then(response => response.json())
+  .then(data => console.log(data));
+
+What happens here:
+fetch() sends request to server
+Server returns response
+response.json() converts response to JSON
+Data is printed in console
+
+📌 Using Async / Await (Modern Way — Recommended)
+async function getUsers() {
+  let response = await fetch("https://jsonplaceholder.typicode.com/users");
+  let data = await response.json();
+  console.log(data);
+}
+
+getUsers();
+
+This looks cleaner and easier to understand.
+
+📌 Fetch API Flow
+fetch() → response → json() → data → use data
+
+📌 GET Request (Default)
+
+Fetch by default sends GET request
+
+fetch("https://jsonplaceholder.typicode.com/posts")
+  .then(res => res.json())
+  .then(data => console.log(data));
+
+📌 POST Request (Send Data to Server)
+
+fetch("https://jsonplaceholder.typicode.com/posts", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    title: "Hello",
+    body: "Learning Fetch API",
+    userId: 1
+  })
+})
+.then(res => res.json())
+.then(data => console.log(data));
+
+📌 Fetch API Methods
+Method	Use
+GET	Get data
+POST	Send data
+PUT	Update data
+DELETE	Delete data
+
+📌 Example with Error Handling
+fetch("https://jsonplaceholder.typicode.com/users")
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("Network error");
+    }
+    return response.json();
+  })
+  .then(data => console.log(data))
+  .catch(error => console.log(error));
+
+📌 Real Life Example
+
+Loading users on page:
+
+async function loadUsers() {
+  let res = await fetch("https://jsonplaceholder.typicode.com/users");
+  let users = await res.json();
+  
+  users.forEach(user => {
+    console.log(user.name);
+  });
+}
+
+loadUsers();
+📌 Why Fetch API is Important: Because it is used in: React apps, Node.js backend, REST APIs, Login systems, Database communication
 
 // Object Oriented in JS :
 // Yes, JS have classes but this feature was introduced in ES6. However, it is important to note that JS is
