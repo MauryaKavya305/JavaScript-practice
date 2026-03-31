@@ -1605,6 +1605,26 @@ console.log(value) // it prints 0
 //     console.log("End");
 // }
 
+const promise3 = new Promise(function(resolve, reject) {
+  setTimeout(function(){
+    let error = true;
+    if(!error) {
+      resolve({username : "Kavya Maurya", email : "kavya@567.com"});
+    } else {
+      reject("ERROR! Something wrong happened.");
+    }
+  }, 1000)
+})
+
+async function consumePromise3() {
+  const response = await promise3;
+  console.log(response);
+}
+
+consumePromise3();
+
+// By this, if there is no error, then its working fine. but if there is an error, then async await throwing errors.
+
 // fetchData();
 // Output:
 // Start
