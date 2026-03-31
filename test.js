@@ -1382,6 +1382,95 @@ console.log(value) // it prints 0
 // Showing notifications
 // Auto logout
 // UI animations
+
+// 📌 setInterval() in JavaScript
+
+// setInterval() is used to run a function repeatedly after a fixed time interval.
+
+// Unlike setTimeout() (which runs only once), setInterval() runs again and again until you stop it.
+
+// 📌 Syntax
+// setInterval(function, delay, param1, param2...)
+// Parameters
+// function → Function to execute
+// delay → Time in milliseconds
+// param1, param2 → Optional parameters
+// 📌 Basic Example
+// setInterval(() => {
+//   console.log("Hello every 2 seconds");
+// }, 2000);
+// Output
+
+// Every 2 seconds:
+
+// Hello every 2 seconds
+// Hello every 2 seconds
+// Hello every 2 seconds
+// ...
+
+// This continues forever until stopped.
+
+// 📌 Example with Function
+// function greet() {
+//   console.log("Hello Kavya");
+// }
+
+// setInterval(greet, 3000);
+
+// Every 3 seconds:
+
+// Hello Kavya
+// Hello Kavya
+// Hello Kavya
+// 📌 Example Counter (Very Common Interview Example)
+// let count = 1;
+
+// setInterval(() => {
+//   console.log(count);
+//   count++;
+// }, 1000);
+
+// Output every 1 second:
+
+// 1
+// 2
+// 3
+// 4
+// 5
+// ...
+// 📌 Stop setInterval (clearInterval)
+
+// To stop interval, use clearInterval()
+
+// let timer = setInterval(() => {
+//   console.log("Running...");
+// }, 1000);
+
+// setTimeout(() => {
+//   clearInterval(timer);
+// }, 5000);
+// Output
+
+// Runs for 5 seconds then stops.
+
+// 📌 Real Life Uses
+
+// setInterval() is used for:
+
+// Clock / Timer
+// Auto refresh data
+// Animations
+// Polling API
+// Countdown timer
+// Game loops
+
+// Example (Clock):
+
+// setInterval(() => {
+//   console.log(new Date());
+// }, 1000);
+
+// Prints current time every second
   
 // 4. Types of Asynchronous Patterns
 // 🔹 1. Callbacks (Oldest)
